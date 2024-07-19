@@ -1,0 +1,145 @@
+openapi: 3.0.3
+info:
+    title: View Collection
+    version: 0.0.1
+servers:
+    - url: http://localhost:80
+paths:
+    /viewcollection:
+        get:
+            tags:
+                - viewcollection
+            summary: list_element viewcollection
+            operationId: viewcollection#list_element
+            responses:
+                "200":
+                    description: OK response.
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/ElementResultResponseTinyCollection'
+                            example:
+                                - id: 4019338364551825384
+                                  name: Ipsa eius incidunt ipsum nulla aliquam.
+                                - id: 4019338364551825384
+                                  name: Ipsa eius incidunt ipsum nulla aliquam.
+    /viewcollection-attr:
+        get:
+            tags:
+                - viewcollection
+            summary: list_element_in_attribute viewcollection
+            operationId: viewcollection#list_element_in_attribute
+            responses:
+                "200":
+                    description: OK response.
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/ListElementInAttributeResponseBody'
+                            example:
+                                data:
+                                    - created_at: Quo vel alias deleniti voluptatibus sit.
+                                      description: Tempora est aspernatur ea quia possimus ut.
+                                      id: 1493121312483939935
+                                      name: Culpa harum incidunt dolor culpa.
+                                    - created_at: Quo vel alias deleniti voluptatibus sit.
+                                      description: Tempora est aspernatur ea quia possimus ut.
+                                      id: 1493121312483939935
+                                      name: Culpa harum incidunt dolor culpa.
+components:
+    schemas:
+        ElementResult:
+            type: object
+            properties:
+                created_at:
+                    type: string
+                    description: Creation time of the element
+                    example: Voluptatem explicabo officiis natus et aut.
+                description:
+                    type: string
+                    description: Description of the element
+                    example: Odit aut rem veritatis.
+                id:
+                    type: integer
+                    description: ID of the element
+                    example: 7815036942075442203
+                    format: int64
+                name:
+                    type: string
+                    description: Name of the element
+                    example: Facilis alias ipsam voluptas.
+            example:
+                created_at: Ea ut.
+                description: Explicabo dolor eveniet.
+                id: 7605912244321515297
+                name: Laborum maiores molestiae.
+            required:
+                - id
+                - name
+                - description
+                - created_at
+        ElementResultCollection:
+            type: array
+            items:
+                $ref: '#/components/schemas/ElementResult'
+            example:
+                - created_at: Quo vel alias deleniti voluptatibus sit.
+                  description: Tempora est aspernatur ea quia possimus ut.
+                  id: 1493121312483939935
+                  name: Culpa harum incidunt dolor culpa.
+                - created_at: Quo vel alias deleniti voluptatibus sit.
+                  description: Tempora est aspernatur ea quia possimus ut.
+                  id: 1493121312483939935
+                  name: Culpa harum incidunt dolor culpa.
+                - created_at: Quo vel alias deleniti voluptatibus sit.
+                  description: Tempora est aspernatur ea quia possimus ut.
+                  id: 1493121312483939935
+                  name: Culpa harum incidunt dolor culpa.
+        ElementResultResponseTiny:
+            type: object
+            properties:
+                id:
+                    type: integer
+                    description: ID of the element
+                    example: 5320053707750383490
+                    format: int64
+                name:
+                    type: string
+                    description: Name of the element
+                    example: Quisquam sed exercitationem et eos et.
+            description: ElementResultResponse result type (tiny view)
+            example:
+                id: 7076545813140296670
+                name: Fugit quod et error dolorem natus.
+            required:
+                - id
+                - name
+        ElementResultResponseTinyCollection:
+            type: array
+            items:
+                $ref: '#/components/schemas/ElementResultResponseTiny'
+            description: list_element_response_body is the result type for an array of ElementResultResponse (tiny view)
+            example:
+                - id: 4019338364551825384
+                  name: Ipsa eius incidunt ipsum nulla aliquam.
+                - id: 4019338364551825384
+                  name: Ipsa eius incidunt ipsum nulla aliquam.
+                - id: 4019338364551825384
+                  name: Ipsa eius incidunt ipsum nulla aliquam.
+        ListElementInAttributeResponseBody:
+            type: object
+            properties:
+                data:
+                    $ref: '#/components/schemas/ElementResultCollection'
+            example:
+                data:
+                    - created_at: Quo vel alias deleniti voluptatibus sit.
+                      description: Tempora est aspernatur ea quia possimus ut.
+                      id: 1493121312483939935
+                      name: Culpa harum incidunt dolor culpa.
+                    - created_at: Quo vel alias deleniti voluptatibus sit.
+                      description: Tempora est aspernatur ea quia possimus ut.
+                      id: 1493121312483939935
+                      name: Culpa harum incidunt dolor culpa.
+tags:
+    - name: viewcollection
